@@ -1,0 +1,5 @@
+{
+  "variants" : {
+    "": { "model": "ccvault:block/vault_reader"}
+  }
+}
