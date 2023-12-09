@@ -2,7 +2,9 @@ package net.joseph.ccvault;
 
 import com.mojang.logging.LogUtils;
 import net.joseph.ccvault.block.ModBlocks;
+import net.joseph.ccvault.blockEntity.ModBlockEntities;
 import net.joseph.ccvault.item.ModItems;
+import net.joseph.ccvault.peripheral.ModPeripherals;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -38,12 +41,17 @@ public class CCVault
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
+        ModBlockEntities.register(eventBus);
 
         // Register ourselves for server and other game events we are interested in
         eventBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    @SubscribeEvent
+    public static void complete(FMLLoadCompleteEvent event) {
+        ComputerCraftAPI.registerPeripheralProvider(new ModPeripherals());
+    }
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
