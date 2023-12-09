@@ -46,12 +46,11 @@ public class CCVault
         // Register ourselves for server and other game events we are interested in
         eventBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.register(this);
-    }
 
-    @SubscribeEvent
-    public static void complete(FMLLoadCompleteEvent event) {
         ComputerCraftAPI.registerPeripheralProvider(new ModPeripherals());
     }
+
+
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
