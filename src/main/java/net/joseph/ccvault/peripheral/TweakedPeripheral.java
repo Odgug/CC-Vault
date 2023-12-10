@@ -14,7 +14,7 @@ import java.util.List;
  * I did not steal the name from Create. I swear!
  * No seriously!
  */
-abstract class TweakedPeripheral<BE extends BlockEntity> implements IPeripheral {
+public abstract class TweakedPeripheral<BE extends BlockEntity> implements IPeripheral {
     private final String type;
     private final BE blockEntity;
     private final List<IComputerAccess> computers = new LinkedList<>();

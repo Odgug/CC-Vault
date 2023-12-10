@@ -2,7 +2,7 @@ package net.joseph.ccvault.blockEntity;
 
 import com.mojang.datafixers.types.Type;
 import net.joseph.ccvault.CCVault;
-import net.joseph.ccvault.block.custom.VaultReaderBlock;
+import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import net.minecraft.Util;
 import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.level.block.entity.BlockEntityType;
