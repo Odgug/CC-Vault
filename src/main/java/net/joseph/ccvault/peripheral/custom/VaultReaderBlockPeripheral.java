@@ -1,13 +1,25 @@
 package net.joseph.ccvault.peripheral.custom;
 
+import com.google.common.collect.Multimap;
 import dan200.computercraft.api.detail.DetailRegistries;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import iskallia.vault.config.gear.VaultGearTierConfig;
+import iskallia.vault.gear.VaultGearHelper;
+import iskallia.vault.gear.attribute.VaultGearModifier;
+import iskallia.vault.gear.data.VaultGearData;
+import iskallia.vault.gear.item.VaultGearItem;
+import iskallia.vault.gear.reader.VaultGearModifierReader;
+import iskallia.vault.gear.tooltip.GearTooltip;
+import iskallia.vault.item.gear.VaultSwordItem;
 import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
 import net.minecraft.world.Container;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -26,9 +38,11 @@ import static net.joseph.ccvault.peripheral.Methods.assertBetween;
 public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlockEntity> {
     private final List<IComputerAccess> pcs = new LinkedList<>();
     private IItemHandler inventory;
+    private VaultReaderBlockEntity be;
     public VaultReaderBlockPeripheral(VaultReaderBlockEntity blockentity) {
         super("vaultreader", blockentity);
         this.inventory = blockentity.getItemHandler();
+        this.be = blockentity;
     }
 
     private static int moveItem( IItemHandler from, int fromSlot, IItemHandler to, int toSlot, final int limit )
@@ -67,10 +81,6 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     @LuaFunction
     public final int size() {return inventory.getSlots();}
 
-    @LuaFunction
-    public final boolean test() {
-        return true;
-    }
     @LuaFunction
     public final Map<Integer, Map<String, ?>> list()
     {
@@ -143,5 +153,41 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
 
         if( actualLimit <= 0 ) return 0;
         return moveItem( from, fromSlot - 1, inventory, toSlot.orElse( 0 ) - 1, actualLimit );
+    }
+
+
+    @LuaFunction
+    public final int getLevel() {
+
+        return VaultGearData.read(be.getItemStack()).getItemLevel();
+    }
+
+    @LuaFunction
+    public final String getRarity() {
+        return VaultGearData.read(be.getItemStack()).getRarity().toString();
+    }
+
+    @LuaFunction
+    public final String test1(int index) {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        VaultGearModifier.AffixType type = VaultGearModifier.AffixType.PREFIX;
+        ItemStack stack = be.getItemStack();
+        Boolean displayDetails = true;
+        List<VaultGearModifier<?>> affixes = data.getModifiers(type);
+            return affixes.get(index).getModifierGroup();
+    }
+
+    @LuaFunction
+    public final int test2(int index) {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        VaultGearModifier.AffixType type = VaultGearModifier.AffixType.PREFIX;
+        ItemStack stack = be.getItemStack();
+        Boolean displayDetails = true;
+        List<VaultGearModifier<?>> affixes = data.getModifiers(type);
+        VaultGearModifier affix = affixes.get(index);
+        VaultGearTierConfig.ModifierConfigRange configRange = (VaultGearTierConfig.ModifierConfigRange)VaultGearTierConfig.getConfig(stack.getItem()).map((tierCfg) -> {
+            return tierCfg.getTierConfigRange(affix, data.getItemLevel());
+        }).orElse(VaultGearTierConfig.ModifierConfigRange.empty());
+        return (int) configRange.minAvailableConfig();
     }
 }

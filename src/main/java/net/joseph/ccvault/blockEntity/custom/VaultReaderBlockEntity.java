@@ -45,7 +45,7 @@ public class VaultReaderBlockEntity extends BlockEntity implements PeripheralBlo
     }
 
     public ItemStack getItemStack() {
-        return this.itemHandler.getStackInSlot(1);
+        return this.itemHandler.getStackInSlot(0);
     }
     public IItemHandler getItemHandler() {
         return this.itemHandler;
