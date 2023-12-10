@@ -47,7 +47,9 @@ public class VaultReaderBlockEntity extends BlockEntity implements PeripheralBlo
     public ItemStack getItemStack() {
         return this.itemHandler.getStackInSlot(1);
     }
-
+    public IItemHandler getItemHandler() {
+        return this.itemHandler;
+    }
     @Override
     public @Nullable IPeripheral getPeripheral(@NotNull Direction side) {
         if (peripheral == null)
