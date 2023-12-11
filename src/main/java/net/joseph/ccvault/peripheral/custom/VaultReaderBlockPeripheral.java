@@ -361,7 +361,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         if (modifier.contains("Crafted")) {
             return "crafted";
         }
-        if (Character.isAlphabetic(firstchar) || firstchar == '+') {
+        if (Character.isAlphabetic(firstchar) || firstchar == '+' || isNumber(String.valueOf(firstchar))) {
             return "regular";
         }
         return "legendary";
