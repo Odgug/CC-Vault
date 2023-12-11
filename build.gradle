@@ -20,7 +20,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 
-version = '0.0.1-3.12.4'
+version = '1.0.0-3.12.4'
 group = 'com.joseph.ccvault' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'ccvault'
 
