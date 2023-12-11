@@ -258,4 +258,95 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         return (Integer)data.getFirstValue(ModGearAttributes.SUFFIXES).orElse(0);
     }
 
+    public static boolean isNumber(String num) {
+        boolean amIValid = false;
+        try {
+            Integer.parseInt(num);
+            // s is a valid integer!
+            amIValid = true;
+        } catch (NumberFormatException e) {
+
+        }
+        return amIValid;
+    }
+
+
+    @LuaFunction
+    public final double getModifierValue(String modifier) {
+        boolean flag = false;
+        int flagint = 0;
+        for (int i = 0; i < modifier.length(); i++) {
+            if (isNumber(String.valueOf(modifier.charAt(i)))) {
+                flag = true;
+                flagint = i;
+                i = 100000;
+            }
+        }
+        if (modifier.contains("IV")) {return 4;}
+        if (modifier.contains("V")) {return 5;}
+        if (modifier.contains("III")) {return 3;}
+        if (modifier.contains("II")) {return 2;}
+
+        if (flag = false) {
+            return 1;
+        }
+        String tempnum = String.valueOf(modifier.charAt(flagint));
+        for (int i = flagint+1; i < modifier.length(); i++) {
+            if (isNumber(String.valueOf(modifier.charAt(i))) || String.valueOf(modifier.charAt(i)).equals(".")) {
+                tempnum = tempnum + (String.valueOf(modifier.charAt(i)));
+            } else {
+                i = 100000;
+            }
+        }
+        return Double.parseDouble(tempnum);
+
+    }
+    @LuaFunction
+    public final double getMaximumRoll(String modifier) {
+        if (!modifier.contains("-")) {
+            return this.getModifierValue(modifier);
+        }
+        int baseIndex = modifier.indexOf('-')+1;
+        String tempnum = String.valueOf(modifier.charAt(baseIndex));
+        for (int i = baseIndex+1; i < modifier.length(); i++) {
+            if (isNumber(String.valueOf(modifier.charAt(i))) || String.valueOf(modifier.charAt(i)).equals(".")) {
+                tempnum = tempnum + (String.valueOf(modifier.charAt(i)));
+            } else {
+                i = 100000;
+            }
+        }
+        return Double.parseDouble(tempnum);
+    }
+
+    @LuaFunction
+    public final double getMinimumRoll(String modifier) {
+        if (!modifier.contains("(")) {
+            return this.getModifierValue(modifier);
+        }
+        int baseIndex = modifier.indexOf('(')+1;
+        String tempnum = String.valueOf(modifier.charAt(baseIndex));
+        for (int i = baseIndex+1; i < modifier.length(); i++) {
+            if (isNumber(String.valueOf(modifier.charAt(i))) || String.valueOf(modifier.charAt(i)).equals(".")) {
+                tempnum = tempnum + (String.valueOf(modifier.charAt(i)));
+            } else {
+                i = 100000;
+            }
+        }
+        return Double.parseDouble(tempnum);
+    }
+
+    @LuaFunction
+    public final String getName(String modifier) {
+        String toReturn = "";
+        boolean isCloud = (modifier.contains("Cloud"));
+        for (int i = 0; i < modifier.length(); i++) {
+            if (Character.isAlphabetic(modifier.charAt(i)) && !(isCloud && (modifier.charAt(i)== 'I' || modifier.charAt(i) == 'V'))) {
+                toReturn = toReturn + String.valueOf(modifier.charAt(i));
+            }
+            if (modifier.charAt(i) == '[') {
+                i = 10000;
+            }
+        }
+        return toReturn;
+    }
 }
