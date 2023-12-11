@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DAD",
+    "DBD",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "the_vault:black_chromatic_steel_ingot"
+    },
+    "A": {
+      "item": "the_vault:gem_pog"
+    },
+    "B": {
+      "item": "the_vault:vault_artisan_station"
+    },
+    "D": {
+      "item": "the_vault:vault_essence"
+    }
+  },
+  "result": {
+    "item": "ccvault:vault_reader"
+  }
+}
