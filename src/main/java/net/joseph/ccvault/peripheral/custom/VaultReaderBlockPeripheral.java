@@ -259,15 +259,15 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     }
 
     public static boolean isNumber(String num) {
-        boolean amIValid = false;
-        try {
-            Integer.parseInt(num);
-            // s is a valid integer!
-            amIValid = true;
-        } catch (NumberFormatException e) {
-
+        if (num == null) {
+            return false;
         }
-        return amIValid;
+        try {
+            double d = Double.parseDouble(num);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 
 
