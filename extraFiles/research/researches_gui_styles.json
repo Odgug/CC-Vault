@@ -1,0 +1,321 @@
+{
+  "styles": {
+    "Colossal Chests": {
+      "x": 10,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/colossal_chest"
+    },
+    "Simple Storage Network": {
+      "x": 60,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/simple_storage_network"
+    },
+    "Refined Storage": {
+      "x": 60,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/refined_storage"
+    },
+    "ComputerCraft": {
+      "x": 60,
+      "y": 200,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/xnet"
+    },
+    "Applied Energistics": {
+      "x": 110,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/applied_energistics"
+    },
+    "Drawers": {
+      "x": 110,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/drawers"
+    },
+    "Mekanism QIO": {
+      "x": 10,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/mekanism_qio"
+    },
+    
+    "Stack Upgrading": {
+      "x": 200,
+      "y": -40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/stackupgrading"
+    },
+    "Auto Refill": {
+      "x": 250,
+      "y": -40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/autorefill"
+    },
+    "Auto Feeding": {
+      "x": 300,
+      "y": -40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/autofeeding"
+    },
+    "Double Pouches": {
+      "x": 200,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/double_pouches"
+    },
+    "Belts": {
+      "x": 250,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/belts"
+    },
+    "Backpacks": {
+      "x": 300,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/backpacks"
+    },
+    "Big Backpacks": {
+      "x": 200,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/big_backpacks"
+    },
+    "Soul Harvester": {
+      "x": 250,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/soul_harvester"
+    },
+    "Junk Management": {
+      "x": 300,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/vault_looter"
+    },
+    "Botania": {
+      "x": 200,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/botania"
+    },
+    "Botania Flux Field": {
+      "x": 490,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/botania_flux_field"
+    },
+    "Mekanism": {
+      "x": 250,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/mekanism"
+    },
+    "Thermal Expansion": {
+      "x": 300,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/thermal_expansion"
+    },
+    "Create": {
+      "x": 250,
+      "y": 160,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/create"
+    },
+    "Waystones": {
+      "x": 390,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/waystones"
+    },
+    "Torch Master": {
+      "x": 440,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/torch_master"
+    },
+    "Trashcans": {
+      "x": 490,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/trashcans"
+    },
+    "Elevators": {
+      "x": 390,
+      "y": 160,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/elevators"
+    },
+    "Vault Compass": {
+      "x": 440,
+      "y": 160,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/vault_compass"
+    },
+    "Altar Automation": {
+      "x": 490,
+      "y": 160,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/conduit"
+    },
+    "Building Gadgets": {
+      "x": 10,
+      "y": 295,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/building_gadgets"
+    },
+    "Weirding Gadgets": {
+      "x": 60,
+      "y": 295,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/weirding_gadgets"
+    },
+    "Mining Gadgets": {
+      "x": 110,
+      "y": 295,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/mining_gadgets"
+    },
+    "Digital Miner": {
+      "x": 60,
+      "y": 325,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/digital_miner"
+    },
+    "Easy Villagers": {
+      "x": 200,
+      "y": 240,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/easy_villagers"
+    },
+    "Easy Piglins": {
+      "x": 250,
+      "y": 240,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/easy_piglins"
+    },
+    "Botany Pots": {
+      "x": 300,
+      "y": 240,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/botany_pots"
+    },
+    "SNAD": {
+      "x": 200,
+      "y": 280,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/snad"
+    },
+    "Cagerium": {
+      "x": 250,
+      "y": 280,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/cagerium"
+    },
+    "Mob Spawners": {
+      "x": 300,
+      "y": 280,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/mob_spawners"
+    },
+    "Phytogenic Insulator": {
+      "x": 250,
+      "y": 320,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/phytogenic_insulator"
+    },
+    "Automatic Genius": {
+      "x": 60,
+      "y": 160,
+      "frameType": "STAR",
+      "icon": "the_vault:gui/researches/automatic_genius"
+    },
+    "Dark Utilities": {
+      "x": 110,
+      "y": 160,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/dark_utilities"
+    },
+    "Flux Networks": {
+      "x": 490,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/flux_networks"
+    },
+    "Powah": {
+      "x": 440,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/powah"
+    },
+    "Iron Generators": {
+      "x": 390,
+      "y": 0,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/iron_generators"
+    },
+    "Thermal Dynamos": {
+      "x": 390,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/thermal_dynamos"
+    },
+    "Mekanism Generators": {
+      "x": 440,
+      "y": 40,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/mekanism_generators"
+    },
+    "Xnet": {
+      "x": 10,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/xnet"
+    },
+    "Modular Routers": {
+      "x": 60,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/modular_routers"
+    },
+    "Pipez": {
+      "x": 110,
+      "y": 120,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/pretty_pipes"
+    },
+    "Iron Furnaces": {
+      "x": 10,
+      "y": 160,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/iron_furnaces"
+    },
+    "Potions": {
+      "x": 390,
+      "y": 240,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/potion"
+    },
+    "Mixtures": {
+      "x": 440,
+      "y": 240,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/mixture"
+    },
+    "Brews": {
+      "x": 490,
+      "y": 240,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/brew"
+    }
+    
+    
+    
+  }
+    
+}

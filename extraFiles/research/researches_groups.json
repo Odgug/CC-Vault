@@ -1,0 +1,136 @@
+{
+  "groups": {
+    "Storage": {
+      "title": "Storage",
+      "research": [
+        "Colossal Chests",
+        "Simple Storage Network",
+        "Refined Storage",
+        "Applied Energistics",
+        "Drawers",
+        "Mekanism QIO"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "Storage": 0.24
+      }
+    },
+    "BigToys": {
+      "title": "Big Toys",
+      "research": [
+        "Mining Gadgets",
+        "Weirding Gadgets",
+        "Digital Miner",
+        "Building Gadgets"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "BigToys": 12.0
+      }
+    },
+    "Production": {
+      "title": "Production",
+      "research": [
+        "Easy Villagers",
+        "SNAD",
+        "Cagerium",
+        "Mob Spawners",
+        "Phytogenic Insulator",
+        "Easy Piglins",
+        "Botany Pots"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "Production": 12.0
+      }
+    },
+    "BigMods": {
+      "title": "Big Mods",
+      "research": [
+        "Create",
+        "Mekanism",
+        "Thermal Expansion",
+        "Botania"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "BigMods": 12.0
+      }
+    },
+    "Power": {
+      "title": "Power",
+      "research": [
+        "Flux Networks",
+        "Powah",
+        "Mekanism Generators",
+        "Thermal Dynamos",
+        "Iron Generators",
+        "Botania Flux Field"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "Power": 6.0
+      }
+    },
+    "QoL": {
+      "title": "QoL",
+      "research": [
+        "Torch Master",
+        "Trashcans",
+        "Elevators",
+        "Waystones",
+        "Vault Compass",
+        "Altar Automation"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+      }
+    },
+    "Looting": {
+      "title": "Looting",
+      "research": [
+        "Belts",
+        "Double Pouches",
+        "Backpacks",
+        "Big Backpacks",
+        "Junk Management",
+        "Stack Upgrading",
+        "Auto Feeding",
+        "Auto Refill",
+        "Soul Harvester"
+
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "Looting": 2.0
+      }
+    },
+      "Handling": {
+        "title": "Handling",
+        "research": [
+          "Xnet",
+          "Modular Routers",
+          "ComputerCraft",
+          "Pipez",
+          "Iron Furnaces",
+          "Dark Utilities"
+        ],
+        "globalCostIncrease": 0.0,
+        "groupCostIncrease": {
+          "Handling": 5.0
+        }
+    },
+    "Alchemy": {
+      "title": "Alchemy",
+      "research": [
+        "Potions",
+        "Mixtures",
+        "Brews"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "Alchemy": 5.0
+      }
+  }
+  }
+}

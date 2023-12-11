@@ -1,0 +1,94 @@
+{
+  "groupStyles": {
+    "Storage": {
+      "group": "Storage",
+      "headerColor": -10758712,
+      "headerTextColor": -1,
+      "x": -10,
+      "y": -25,
+      "boxWidth": 170,
+      "boxHeight": 105,
+      "icon": "the_vault:gui/research_groups/storage"
+    },
+    "Handling": {
+      "group": "Handling",
+      "headerColor": -16776961,
+      "headerTextColor": -1,
+      "x": -10,
+      "y": 95,
+      "boxWidth": 170,
+      "boxHeight": 145,
+      "icon": "the_vault:gui/research_groups/handling"
+    },
+    "BigToys": {
+      "group": "BigToys",
+      "headerColor": -16776961,
+      "headerTextColor": -1,
+      "x": -10,
+      "y": 250,
+      "boxWidth": 170,
+      "boxHeight": 105,
+      "icon": "the_vault:gui/research_groups/big_toys"
+    },
+    "Power": {
+      "group": "Power",
+      "headerColor": -1498590,
+      "headerTextColor": -1,
+      "x": 370,
+      "y": -25,
+      "boxWidth": 170,
+      "boxHeight": 105,
+      "icon": "the_vault:gui/research_groups/power"
+    },
+    "QoL": {
+      "group": "QoL",
+      "headerColor": -2196693,
+      "headerTextColor": -1,
+      "x": 370,
+      "y": 95,
+      "boxWidth": 170,
+      "boxHeight": 105,
+      "icon": "the_vault:gui/research_groups/base"
+    },
+    "Production": {
+      "group": "Production",
+      "headerColor": -11298849,
+      "headerTextColor": -1,
+      "x": 180,
+      "y": 215,
+      "boxWidth": 170,
+      "boxHeight": 145,
+      "icon": "the_vault:gui/research_groups/farming"
+    },
+    "BigMods": {
+      "group": "BigMods",
+      "headerColor": -11228136,
+      "headerTextColor": -1,
+      "x": 180,
+      "y": 95,
+      "boxWidth": 170,
+      "boxHeight": 105,
+      "icon": "the_vault:gui/research_groups/processing"
+    },
+    "Looting": {
+      "group": "Looting",
+      "headerColor": -14336,
+      "headerTextColor": -1,
+      "x": 180,
+      "y": -65,
+      "boxWidth": 170,
+      "boxHeight": 145,
+      "icon": "the_vault:gui/research_groups/looting"
+    },
+    "Alchemy": {
+      "group": "Alchemy",
+      "headerColor": -14336,
+      "headerTextColor": -1,
+      "x": 370,
+      "y": 215,
+      "boxWidth": 170,
+      "boxHeight": 105,
+      "icon": "the_vault:gui/research_groups/bottle"
+    }
+  }
+}
