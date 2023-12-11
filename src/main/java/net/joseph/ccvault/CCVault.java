@@ -8,6 +8,8 @@ import net.joseph.ccvault.peripheral.ModPeripherals;
 import net.joseph.ccvault.screen.ModMenuTypes;
 import net.joseph.ccvault.screen.VaultReaderBlockScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -54,6 +56,8 @@ public class CCVault
     }
     private void clientSetup(final FMLClientSetupEvent event) {
         MenuScreens.register(ModMenuTypes.VAULT_READER_BLOCK_MENU.get(), VaultReaderBlockScreen::new);
+
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.VAULT_READER_BLOCK.get(), RenderType.translucent());
         }
 
     private void setup(final FMLCommonSetupEvent event)

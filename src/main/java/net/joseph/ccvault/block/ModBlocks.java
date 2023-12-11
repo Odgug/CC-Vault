@@ -23,7 +23,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> VAULT_READER_BLOCK = registerBlock("vault_reader",
             () -> new VaultReaderBlock(BlockBehaviour
-                    .Properties.of(Material.STONE).strength(0.2f)), CreativeModeTab.TAB_MISC);
+                    .Properties.of(Material.STONE).strength(0.2f).noOcclusion()), CreativeModeTab.TAB_MISC);
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name,block);
         registerBlockItem(name,toReturn,tab);

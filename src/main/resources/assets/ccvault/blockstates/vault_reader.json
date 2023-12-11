@@ -1,5 +1,8 @@
 {
-  "variants" : {
-    "": { "model": "ccvault:block/vault_reader"}
+  "variants": {
+    "facing=north": { "model": "ccvault:block/vault_reader" },
+    "facing=east": { "model": "ccvault:block/vault_reader", "y": 90 },
+    "facing=south": { "model": "ccvault:block/vault_reader", "y": 180 },
+    "facing=west": { "model": "ccvault:block/vault_reader", "y": 270 }
   }
 }
