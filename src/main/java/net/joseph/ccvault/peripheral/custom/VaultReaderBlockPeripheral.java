@@ -11,11 +11,14 @@ import iskallia.vault.gear.data.VaultGearData;
 import iskallia.vault.gear.item.VaultGearItem;
 import iskallia.vault.gear.reader.VaultGearModifierReader;
 import iskallia.vault.gear.tooltip.GearTooltip;
+import iskallia.vault.init.ModGearAttributes;
 import iskallia.vault.item.gear.VaultSwordItem;
 import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -157,7 +160,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
 
 
     @LuaFunction
-    public final int getLevel() {
+    public final int getItemLevel() {
 
         return VaultGearData.read(be.getItemStack()).getItemLevel();
     }
@@ -168,26 +171,91 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     }
 
     @LuaFunction
-    public final String test1(int index) {
-        VaultGearData data =VaultGearData.read(be.getItemStack());
-        VaultGearModifier.AffixType type = VaultGearModifier.AffixType.PREFIX;
-        ItemStack stack = be.getItemStack();
-        Boolean displayDetails = true;
-        List<VaultGearModifier<?>> affixes = data.getModifiers(type);
-            return affixes.get(index).getModifierGroup();
+    public final int getRepairSlots() {
+        return VaultGearData.read(be.getItemStack()).getRepairSlots();
     }
 
     @LuaFunction
-    public final int test2(int index) {
+    public final int getUsedRepairSlots() {
+        return VaultGearData.read(be.getItemStack()).getUsedRepairSlots();
+    }
+
+
+
+
+    @LuaFunction
+    public final String getImplicit(int index) {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        VaultGearModifier.AffixType type = VaultGearModifier.AffixType.IMPLICIT;
+        ItemStack stack = be.getItemStack();
+        Boolean displayDetail = true;
+        List<VaultGearModifier<?>> affixes = data.getModifiers(type);
+
+        if (index >= affixes.size()) {
+            return "null";
+        }
+        VaultGearModifier affix = affixes.get(index);
+
+        MutableComponent component = (MutableComponent) affix.getDisplay(data,type,stack,displayDetail).get();
+        return component.getString();
+
+    }
+    @LuaFunction
+    public final String getPrefix(int index) {
         VaultGearData data =VaultGearData.read(be.getItemStack());
         VaultGearModifier.AffixType type = VaultGearModifier.AffixType.PREFIX;
         ItemStack stack = be.getItemStack();
-        Boolean displayDetails = true;
+        Boolean displayDetail = true;
         List<VaultGearModifier<?>> affixes = data.getModifiers(type);
-        VaultGearModifier affix = affixes.get(index);
-        VaultGearTierConfig.ModifierConfigRange configRange = (VaultGearTierConfig.ModifierConfigRange)VaultGearTierConfig.getConfig(stack.getItem()).map((tierCfg) -> {
-            return tierCfg.getTierConfigRange(affix, data.getItemLevel());
-        }).orElse(VaultGearTierConfig.ModifierConfigRange.empty());
-        return (int) configRange.minAvailableConfig();
+
+        if (affixes.size() > index) {
+            VaultGearModifier affix = affixes.get(index);
+
+            MutableComponent component = (MutableComponent) affix.getDisplay(data,type,stack,displayDetail).get();
+            return component.getString();
+        }
+        if (this.getPrefixCount() > index) {
+            return "empty";
+        }
+        return "null";
+
     }
+    @LuaFunction
+    public final String getSuffix(int index) {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        VaultGearModifier.AffixType type = VaultGearModifier.AffixType.SUFFIX;
+        ItemStack stack = be.getItemStack();
+        Boolean displayDetail = true;
+        List<VaultGearModifier<?>> affixes = data.getModifiers(type);
+
+
+        if (affixes.size() > index) {
+            VaultGearModifier affix = affixes.get(index);
+
+            MutableComponent component = (MutableComponent) affix.getDisplay(data,type,stack,displayDetail).get();
+            return component.getString();
+        }
+        if (this.getSuffixCount() > index) {
+            return "empty";
+        }
+            return "null";
+    }
+
+    @LuaFunction
+    public final int getImplicitCount() {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        return data.getModifiers(VaultGearModifier.AffixType.IMPLICIT).size();
+    }
+    @LuaFunction
+    public final int getPrefixCount() {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        return (Integer)data.getFirstValue(ModGearAttributes.PREFIXES).orElse(0);
+    }
+
+    @LuaFunction
+    public final int getSuffixCount() {
+        VaultGearData data =VaultGearData.read(be.getItemStack());
+        return (Integer)data.getFirstValue(ModGearAttributes.SUFFIXES).orElse(0);
+    }
+
 }
