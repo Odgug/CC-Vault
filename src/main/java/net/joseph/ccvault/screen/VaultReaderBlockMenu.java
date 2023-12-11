@@ -31,7 +31,7 @@ public class VaultReaderBlockMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 34, 40));
+            this.addSlot(new SlotItemHandler(handler, 0, 64, 32));
         });
     }
     private static final int HOTBAR_SLOT_COUNT = 9;
