@@ -287,7 +287,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         if (modifier.contains("III")) {return 3;}
         if (modifier.contains("II")) {return 2;}
 
-        if (flag = false) {
+        if (!flag) {
             return 1;
         }
         String tempnum = String.valueOf(modifier.charAt(flagint));
