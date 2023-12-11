@@ -343,7 +343,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
             if (Character.isAlphabetic(modifier.charAt(i)) && !(isCloud && (modifier.charAt(i)== 'I' || modifier.charAt(i) == 'V'))) {
                 toReturn = toReturn + String.valueOf(modifier.charAt(i));
             }
-            if (modifier.charAt(i) == '[') {
+            if (modifier.charAt(i) == '[' || modifier.charAt(i) == '(') {
                 i = 10000;
             }
         }
@@ -352,17 +352,18 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     @LuaFunction
     public final String getType(String modifier) {
         char firstchar = modifier.charAt(0);
-        switch (firstchar) {
-            case 'e':
-                return "empty";
-            case 'n':
-                return "null";
-            case '✦':
-                return "legendary";
-            case '⛏':
-                return "crafted";
-            default:
-                return "regular";
+        if (firstchar == 'e') {
+            return "empty";
         }
+        if (firstchar == 'n') {
+            return "null";
+        }
+        if (modifier.contains("Crafted")) {
+            return "crafted";
+        }
+        if (Character.isAlphabetic(firstchar) || firstchar == '+') {
+            return "regular";
+        }
+        return "legendary";
     }
 }
