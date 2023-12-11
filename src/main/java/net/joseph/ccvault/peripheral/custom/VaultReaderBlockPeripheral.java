@@ -349,4 +349,20 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         }
         return toReturn;
     }
+    @LuaFunction
+    public final String getType(String modifier) {
+        char firstchar = modifier.charAt(0);
+        switch (firstchar) {
+            case 'e':
+                return "empty";
+            case 'n':
+                return "null";
+            case '✦':
+                return "legendary";
+            case '⛏':
+                return "crafted";
+            default:
+                return "regular";
+        }
+    }
 }
