@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P#P",
+    " R ",
+    "P P"
+  ],
+  "key": {
+    "#": {
+      "item": "the_vault:extraordinary_larimar"
+    },
+    "R": {
+      "item": "computercraft:pocket_computer_normal"
+    },
+    "P": {
+      "item": "the_vault:black_chromatic_steel_ingot"
+    }
+  },
+  "result": {
+    "item": "computercraft:pocket_computer_advanced"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#H#",
+    "HRH",
+    "#G#"
+  ],
+  "key": {
+    "#": {
+      "item": "the_vault:black_chromatic_steel_ingot"
+    },
+    "R": {
+      "item": "the_vault:echo_pog"
+    },
+    "H": {
+      "item": "the_vault:extraordinary_larimar"
+    },
+    "G": {
+      "item": "the_vault:magic_silk"
+    }
+  },
+  "result": {
+    "item": "computercraft:pocket_computer_normal"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#R#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "the_vault:chromatic_steel_ingot"
+    },
+    "R": {
+      "item": "the_vault:gem_pog"
+    }
+  },
+  "result": {
+    "item": "computercraft:wired_modem"
+  }
+}
