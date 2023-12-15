@@ -28,9 +28,7 @@ public abstract class TweakedPeripheral<BE extends BlockEntity> implements IPeri
         this.type = type;
         this.blockEntity = blockEntity;
     }
-    public Optional<MutableComponent> getDisplay(VaultGearModifier modifier, VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
-        return Optional.ofNullable(modifier.getAttribute().getReader().getDisplay(modifier, data, type, stack));
-    }
+
     public void sendEvent(@Nonnull String event, @Nullable Object... arguments) {
         for (IComputerAccess pc : computers)
             pc.queueEvent(event, pc.getAttachmentName(), arguments);

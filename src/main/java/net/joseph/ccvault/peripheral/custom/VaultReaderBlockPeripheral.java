@@ -163,9 +163,11 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         if( actualLimit <= 0 ) return 0;
         return moveItem( from, fromSlot - 1, inventory, toSlot.orElse( 0 ) - 1, actualLimit );
     }
-
+    public Optional<MutableComponent> getDisplay2(VaultGearModifier modifier, VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
+        return Optional.ofNullable(modifier.getAttribute().getReader().getDisplay(modifier, data, type, stack));
+    }
     public Optional<MutableComponent> getDisplay(VaultGearModifier modifier,VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
-        return super.getDisplay(modifier, data, type, stack, displayDetail).map(modifier.getCategory().getModifierFormatter()).map((displayText) -> {
+        return getDisplay2(modifier, data, type, stack, displayDetail).map(modifier.getCategory().getModifierFormatter()).map((displayText) -> {
             if (!modifier.hasGameTimeAdded()) {
                 return displayText;
             } else {
