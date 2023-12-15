@@ -165,7 +165,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     }
 
     public Optional<MutableComponent> getDisplay(VaultGearModifier modifier,VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
-        return getDisplay(modifier, data, type, stack, displayDetail).map(modifier.getCategory().getModifierFormatter()).map((displayText) -> {
+        return super.getDisplay(modifier, data, type, stack, displayDetail).map(modifier.getCategory().getModifierFormatter()).map((displayText) -> {
             if (!modifier.hasGameTimeAdded()) {
                 return displayText;
             } else {
