@@ -200,7 +200,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                         }
 
                         cmpRangeDescriptor.append(rangeCmp);
-                        if (true) {
+                        if (false) {
                             cmpRangeDescriptor.append(",");
                         }
                     }
