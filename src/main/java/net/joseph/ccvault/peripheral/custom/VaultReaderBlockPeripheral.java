@@ -19,8 +19,7 @@ import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
+
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
@@ -173,8 +172,8 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
             } else {
                 int showDuration = 600;
                 long added = modifier.getGameTimeAdded();
-                Level currentWorld = Minecraft.getInstance().level;
-                if (currentWorld != null && currentWorld.getGameTime() - added <= (long)showDuration) {
+
+                if (false) {
                     displayText.append((new TextComponent(" [new]")).withStyle(ChatFormatting.GOLD));
                     return displayText;
                 } else {
@@ -201,13 +200,13 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                         }
 
                         cmpRangeDescriptor.append(rangeCmp);
-                        if (Screen.hasAltDown()) {
+                        if (true) {
                             cmpRangeDescriptor.append(",");
                         }
                     }
                 }
 
-                if (Screen.hasAltDown()) {
+                if (true) {
                     if (!cmpRangeDescriptor.getString().isBlank()) {
                         cmpRangeDescriptor.append(" ");
                     }
