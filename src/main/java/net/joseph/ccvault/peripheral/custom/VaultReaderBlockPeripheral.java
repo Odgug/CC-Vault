@@ -206,7 +206,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                     }
                 }
 
-                if (true) {
+                if (false) {
                     if (!cmpRangeDescriptor.getString().isBlank()) {
                         cmpRangeDescriptor.append(" ");
                     }
