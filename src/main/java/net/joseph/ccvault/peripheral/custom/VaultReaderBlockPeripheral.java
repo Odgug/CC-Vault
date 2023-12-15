@@ -7,6 +7,7 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import iskallia.vault.config.gear.VaultGearTierConfig;
 import iskallia.vault.gear.VaultGearHelper;
 import iskallia.vault.gear.attribute.VaultGearModifier;
+import iskallia.vault.gear.attribute.config.ConfigurableAttributeGenerator;
 import iskallia.vault.gear.data.VaultGearData;
 import iskallia.vault.gear.item.VaultGearItem;
 import iskallia.vault.gear.reader.VaultGearModifierReader;
@@ -17,13 +18,18 @@ import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
@@ -158,6 +164,72 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         return moveItem( from, fromSlot - 1, inventory, toSlot.orElse( 0 ) - 1, actualLimit );
     }
 
+    public Optional<MutableComponent> getDisplay(VaultGearModifier modifier,VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
+        return getDisplay(modifier, data, type, stack, displayDetail).map(modifier.getCategory().getModifierFormatter()).map((displayText) -> {
+            if (!modifier.hasGameTimeAdded()) {
+                return displayText;
+            } else {
+                int showDuration = 600;
+                long added = modifier.getGameTimeAdded();
+                Level currentWorld = Minecraft.getInstance().level;
+                if (currentWorld != null && currentWorld.getGameTime() - added <= (long)showDuration) {
+                    displayText.append((new TextComponent(" [new]")).withStyle(ChatFormatting.GOLD));
+                    return displayText;
+                } else {
+                    return displayText;
+                }
+            }
+        }).map((displayText) -> {
+            if (!displayDetail) {
+                return displayText;
+            } else {
+                Style txtStyle = Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(false).withUnderlined(false).withBold(false);
+                String categoryInfo = modifier.getCategory().getTooltipDescriptor();
+                VaultGearTierConfig.ModifierConfigRange configRange = (VaultGearTierConfig.ModifierConfigRange)VaultGearTierConfig.getConfig(stack.getItem()).map((tierCfg) -> {
+                    return tierCfg.getTierConfigRange(modifier, data.getItemLevel());
+                }).orElse(VaultGearTierConfig.ModifierConfigRange.empty());
+                ConfigurableAttributeGenerator attributeGenerator = modifier.getAttribute().getGenerator();
+                MutableComponent cmpRangeDescriptor = new TextComponent(categoryInfo);
+                MutableComponent rangeCmp;
+                if (configRange.minAvailableConfig() != null && configRange.maxAvailableConfig() != null) {
+                    rangeCmp = attributeGenerator.getConfigRangeDisplay(modifier.getAttribute().getReader(), configRange.minAvailableConfig(), configRange.maxAvailableConfig());
+                    if (rangeCmp != null) {
+                        if (!cmpRangeDescriptor.getString().isBlank()) {
+                            cmpRangeDescriptor.append(" ");
+                        }
+
+                        cmpRangeDescriptor.append(rangeCmp);
+                        if (Screen.hasAltDown()) {
+                            cmpRangeDescriptor.append(",");
+                        }
+                    }
+                }
+
+                if (Screen.hasAltDown()) {
+                    if (!cmpRangeDescriptor.getString().isBlank()) {
+                        cmpRangeDescriptor.append(" ");
+                    }
+
+                    if (configRange.tierConfig() != null) {
+                        rangeCmp = attributeGenerator.getConfigRangeDisplay(modifier.getAttribute().getReader(), configRange.tierConfig());
+                        if (rangeCmp != null) {
+                            cmpRangeDescriptor.append("T%s: ".formatted(modifier.getRolledTier() + 1));
+                            cmpRangeDescriptor.append(rangeCmp);
+                        }
+                    } else {
+                        cmpRangeDescriptor.append("T%s".formatted(modifier.getRolledTier() + 1));
+                    }
+                }
+
+                if (!cmpRangeDescriptor.getString().isBlank()) {
+                    displayText.append((new TextComponent(" ")).withStyle(txtStyle).append("(").append(cmpRangeDescriptor).append(")"));
+                }
+
+                return displayText;
+            }
+        });
+    }
+
 
     @LuaFunction
     public final int getItemLevel() {
@@ -196,7 +268,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         }
         VaultGearModifier affix = affixes.get(index);
 
-        MutableComponent component = (MutableComponent) affix.getDisplay(data,type,stack,displayDetail).get();
+        MutableComponent component = (MutableComponent) getDisplay(affix, data,type,stack,displayDetail).get();
         return component.getString();
 
     }
@@ -211,7 +283,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         if (affixes.size() > index) {
             VaultGearModifier affix = affixes.get(index);
 
-            MutableComponent component = (MutableComponent) affix.getDisplay(data,type,stack,displayDetail).get();
+            MutableComponent component = (MutableComponent) getDisplay(affix, data,type,stack,displayDetail).get();
             return component.getString();
         }
         if (this.getPrefixCount() > index) {
@@ -232,7 +304,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         if (affixes.size() > index) {
             VaultGearModifier affix = affixes.get(index);
 
-            MutableComponent component = (MutableComponent) affix.getDisplay(data,type,stack,displayDetail).get();
+            MutableComponent component = (MutableComponent) getDisplay(affix, data,type,stack,displayDetail).get();
             return component.getString();
         }
         if (this.getSuffixCount() > index) {
