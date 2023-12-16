@@ -166,7 +166,14 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         return Optional.ofNullable(modifier.getAttribute().getReader().getDisplay(modifier, data, type, stack));
     }
     public Optional<MutableComponent> getDisplay(VaultGearModifier modifier,VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
-        return getDisplay2(modifier, data, type, stack, displayDetail).map(modifier.getCategory().getModifierFormatter()).map((displayText) -> {
+        boolean isCL;
+        VaultGearModifier.AffixCategory cat;
+        if (modifier.getCategory() == VaultGearModifier.AffixCategory.LEGENDARY || modifier.getCategory() == VaultGearModifier.AffixCategory.CRAFTED) {
+            cat = VaultGearModifier.AffixCategory.NONE;
+        } else {
+            cat = modifier.getCategory();
+        }
+        return getDisplay2(modifier, data, type, stack, displayDetail).map(cat.getModifierFormatter()).map((displayText) -> {
             if (!modifier.hasGameTimeAdded()) {
                 return displayText;
             } else {
@@ -185,13 +192,16 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                 return displayText;
             } else {
                 Style txtStyle = Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(false).withUnderlined(false).withBold(false);
-                String categoryInfo = modifier.getCategory().getTooltipDescriptor();
+
+                String categoryInfo = cat.getTooltipDescriptor();
+
                 VaultGearTierConfig.ModifierConfigRange configRange = (VaultGearTierConfig.ModifierConfigRange)VaultGearTierConfig.getConfig(stack.getItem()).map((tierCfg) -> {
                     return tierCfg.getTierConfigRange(modifier, data.getItemLevel());
                 }).orElse(VaultGearTierConfig.ModifierConfigRange.empty());
                 ConfigurableAttributeGenerator attributeGenerator = modifier.getAttribute().getGenerator();
                 MutableComponent cmpRangeDescriptor = new TextComponent(categoryInfo);
                 MutableComponent rangeCmp;
+
                 if (configRange.minAvailableConfig() != null && configRange.maxAvailableConfig() != null) {
                     rangeCmp = attributeGenerator.getConfigRangeDisplay(modifier.getAttribute().getReader(), configRange.minAvailableConfig(), configRange.maxAvailableConfig());
                     if (rangeCmp != null) {
@@ -200,8 +210,11 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                         }
 
                         cmpRangeDescriptor.append(rangeCmp);
-                        if (false) {
-                            cmpRangeDescriptor.append(",");
+                        if (modifier.getCategory() == VaultGearModifier.AffixCategory.CRAFTED) {
+                            cmpRangeDescriptor.append(" [Crafted] ");
+                        }
+                        if (modifier.getCategory() == VaultGearModifier.AffixCategory.LEGENDARY) {
+                            cmpRangeDescriptor.append(" [Legendary] ");
                         }
                     }
                 }
@@ -434,9 +447,9 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         if (modifier.contains("Crafted")) {
             return "crafted";
         }
-        if (Character.isAlphabetic(firstchar) || firstchar == '+' || isNumber(String.valueOf(firstchar))) {
-            return "regular";
+        if (modifier.contains("Legendary")) {
+            return "legendary";
         }
-        return "legendary";
+        return "regular";
     }
 }
