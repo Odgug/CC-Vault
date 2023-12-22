@@ -14,7 +14,6 @@ public class ModPeripherals implements IPeripheralProvider {
     @NotNull
     public LazyOptional<IPeripheral> getPeripheral(@NotNull Level world, @NotNull BlockPos pos, @NotNull Direction side) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-
         if (blockEntity instanceof PeripheralBlockEntity peripheralBlock) {
             IPeripheral peripheral = peripheralBlock.getPeripheral(side);
 

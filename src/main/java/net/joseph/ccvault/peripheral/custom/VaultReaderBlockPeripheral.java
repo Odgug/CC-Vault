@@ -13,10 +13,12 @@ import iskallia.vault.gear.item.VaultGearItem;
 import iskallia.vault.gear.reader.VaultGearModifierReader;
 import iskallia.vault.gear.tooltip.GearTooltip;
 import iskallia.vault.init.ModGearAttributes;
+import iskallia.vault.item.data.InscriptionData;
 import iskallia.vault.item.gear.VaultSwordItem;
 import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
+import net.joseph.ccvault.mixin.InscriptionDataAccesor;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
 import net.minecraft.ChatFormatting;
 
@@ -418,6 +420,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                 i = 100000;
             }
         }
+
         return Double.parseDouble(tempnum);
     }
 
@@ -452,4 +455,12 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         }
         return "regular";
     }
+
+    @LuaFunction
+    public final int getTime() {
+        InscriptionData data = InscriptionData.from(be.getItemStack());
+        return ((InscriptionDataAccesor) data).getTime();
+
+    }
+
 }
