@@ -456,11 +456,30 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         return "regular";
     }
 
+    // in seconds
     @LuaFunction
     public final int getTime() {
         InscriptionData data = InscriptionData.from(be.getItemStack());
-        return ((InscriptionDataAccesor) data).getTime();
+        return ((InscriptionDataAccesor) data).getTime() / 20;
 
     }
+    @LuaFunction
+     public final int getCompletion() {
+        InscriptionData data = InscriptionData.from(be.getItemStack());
+        return Math.round( ((InscriptionDataAccesor) data).getCompletion() * 100.0F);
+    }
+    @LuaFunction
+    public final double getInstability() {
+        InscriptionData data = InscriptionData.from(be.getItemStack());
+        return ((InscriptionDataAccesor) data).getInstability() * 100.0F;
+    }
 
+    @LuaFunction
+    public final String getRoom() {
+        InscriptionData data = InscriptionData.from(be.getItemStack());
+        if (data.getEntries().size() == 0) {
+            return "Empty";
+        }
+        return data.getEntries().get(0).toRoomEntry().getName().getString();
+    }
 }
