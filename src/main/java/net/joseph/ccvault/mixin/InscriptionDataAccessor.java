@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(InscriptionData.class)
-public interface InscriptionDataAccesor {
+public interface InscriptionDataAccessor {
     @Accessor
     float getCompletion();
 

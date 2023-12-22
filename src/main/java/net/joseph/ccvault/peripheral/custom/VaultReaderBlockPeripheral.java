@@ -1,24 +1,18 @@
 package net.joseph.ccvault.peripheral.custom;
 
-import com.google.common.collect.Multimap;
 import dan200.computercraft.api.detail.DetailRegistries;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import iskallia.vault.config.gear.VaultGearTierConfig;
-import iskallia.vault.gear.VaultGearHelper;
 import iskallia.vault.gear.attribute.VaultGearModifier;
 import iskallia.vault.gear.attribute.config.ConfigurableAttributeGenerator;
 import iskallia.vault.gear.data.VaultGearData;
-import iskallia.vault.gear.item.VaultGearItem;
-import iskallia.vault.gear.reader.VaultGearModifierReader;
-import iskallia.vault.gear.tooltip.GearTooltip;
 import iskallia.vault.init.ModGearAttributes;
 import iskallia.vault.item.data.InscriptionData;
-import iskallia.vault.item.gear.VaultSwordItem;
 import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
-import net.joseph.ccvault.mixin.InscriptionDataAccesor;
+import net.joseph.ccvault.mixin.InscriptionDataAccessor;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
 import net.minecraft.ChatFormatting;
 
@@ -26,11 +20,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.Container;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
@@ -460,18 +450,18 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     @LuaFunction
     public final int getTime() {
         InscriptionData data = InscriptionData.from(be.getItemStack());
-        return ((InscriptionDataAccesor) data).getTime() / 20;
+        return ((InscriptionDataAccessor) data).getTime() / 20;
 
     }
     @LuaFunction
      public final int getCompletion() {
         InscriptionData data = InscriptionData.from(be.getItemStack());
-        return Math.round( ((InscriptionDataAccesor) data).getCompletion() * 100.0F);
+        return Math.round( ((InscriptionDataAccessor) data).getCompletion() * 100.0F);
     }
     @LuaFunction
     public final double getInstability() {
         InscriptionData data = InscriptionData.from(be.getItemStack());
-        return ((InscriptionDataAccesor) data).getInstability() * 100.0F;
+        return ((InscriptionDataAccessor) data).getInstability() * 100.0F;
     }
 
     @LuaFunction
