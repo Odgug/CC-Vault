@@ -2,7 +2,7 @@
   "required": true,
   "package": "net.joseph.ccvault.mixin",
   "compatibilityLevel": "JAVA_17",
-  "": [
+  "mixins": [
     "InscriptionDataAccessor"
   ],
   "injectors": {
