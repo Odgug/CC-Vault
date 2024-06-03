@@ -12,7 +12,6 @@ import iskallia.vault.item.data.InscriptionData;
 import net.joseph.ccvault.blockEntity.custom.VaultReaderBlockEntity;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
-import net.joseph.ccvault.mixin.InscriptionDataAccessor;
 import net.joseph.ccvault.peripheral.TweakedPeripheral;
 import net.minecraft.ChatFormatting;
 
@@ -187,7 +186,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
 
                 String categoryInfo = cat.getTooltipDescriptor();
 
-                VaultGearTierConfig.ModifierConfigRange configRange = (VaultGearTierConfig.ModifierConfigRange)VaultGearTierConfig.getConfig(stack.getItem()).map((tierCfg) -> {
+                VaultGearTierConfig.ModifierConfigRange configRange = (VaultGearTierConfig.ModifierConfigRange)VaultGearTierConfig.getConfig(stack).map((tierCfg) -> {
                     return tierCfg.getTierConfigRange(modifier, data.getItemLevel());
                 }).orElse(VaultGearTierConfig.ModifierConfigRange.empty());
                 ConfigurableAttributeGenerator attributeGenerator = modifier.getAttribute().getGenerator();
@@ -447,22 +446,22 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     }
 
     // in seconds
-    @LuaFunction
-    public final int getTime() {
-        InscriptionData data = InscriptionData.from(be.getItemStack());
-        return ((InscriptionDataAccessor) data).getTime() / 20;
-
-    }
-    @LuaFunction
-     public final int getCompletion() {
-        InscriptionData data = InscriptionData.from(be.getItemStack());
-        return Math.round( ((InscriptionDataAccessor) data).getCompletion() * 100.0F);
-    }
-    @LuaFunction
-    public final double getInstability() {
-        InscriptionData data = InscriptionData.from(be.getItemStack());
-        return ((InscriptionDataAccessor) data).getInstability() * 100.0F;
-    }
+//    @LuaFunction
+//    public final int getTime() {
+//        InscriptionData data = InscriptionData.from(be.getItemStack());
+//        return ((InscriptionDataAccessor) data).getTime() / 20;
+//
+//    }
+//    @LuaFunction
+//     public final int getCompletion() {
+//        InscriptionData data = InscriptionData.from(be.getItemStack());
+//        return Math.round( ((InscriptionDataAccessor) data).getCompletion() * 100.0F);
+//    }
+//    @LuaFunction
+//    public final double getInstability() {
+//        InscriptionData data = InscriptionData.from(be.getItemStack());
+//        return ((InscriptionDataAccessor) data).getInstability() * 100.0F;
+//    }
 
     @LuaFunction
     public final String getRoom() {
