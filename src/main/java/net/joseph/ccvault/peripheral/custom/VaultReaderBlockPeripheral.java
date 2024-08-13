@@ -159,10 +159,10 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     public Optional<MutableComponent> getDisplay(VaultGearModifier modifier,VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
         boolean isCL;
         VaultGearModifier.AffixCategory cat;
-        if (modifier.getCategory() == VaultGearModifier.AffixCategory.LEGENDARY || modifier.getCategory() == VaultGearModifier.AffixCategory.CRAFTED) {
+        if (modifier.hasCategory(VaultGearModifier.AffixCategory.LEGENDARY)  || modifier.hasCategory(VaultGearModifier.AffixCategory.CRAFTED)) {
             cat = VaultGearModifier.AffixCategory.NONE;
         } else {
-            cat = modifier.getCategory();
+            cat = modifier.getCategories().first();
         }
         return getDisplay2(modifier, data, type, stack, displayDetail).map(cat.getModifierFormatter()).map((displayText) -> {
             if (!modifier.hasGameTimeAdded()) {
@@ -201,10 +201,10 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
                         }
 
                         cmpRangeDescriptor.append(rangeCmp);
-                        if (modifier.getCategory() == VaultGearModifier.AffixCategory.CRAFTED) {
+                        if (modifier.hasCategory(VaultGearModifier.AffixCategory.CRAFTED)) {
                             cmpRangeDescriptor.append(" [Crafted] ");
                         }
-                        if (modifier.getCategory() == VaultGearModifier.AffixCategory.LEGENDARY) {
+                        if (modifier.hasCategory(VaultGearModifier.AffixCategory.LEGENDARY)) {
                             cmpRangeDescriptor.append(" [Legendary] ");
                         }
                     }

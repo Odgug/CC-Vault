@@ -23,7 +23,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.1.1-3.14'
+version = '1.1.2-3.15'
 group = 'com.joseph.ccvault' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'ccvault'
 
@@ -166,7 +166,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.9'
-    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:5394784")
+    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:5621637")
     implementation fg.deobf("org.squiddev:cc-tweaked-1.18.2:1.101.3")
     //implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:4879913")
     // Real mod deobf dependency examples - these get remapped to your current mappings
