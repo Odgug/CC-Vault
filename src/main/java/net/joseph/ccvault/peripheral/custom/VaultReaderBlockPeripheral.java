@@ -159,7 +159,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
     public Optional<MutableComponent> getDisplay(VaultGearModifier modifier,VaultGearData data, VaultGearModifier.AffixType type, ItemStack stack, boolean displayDetail) {
         boolean isCL;
         VaultGearModifier.AffixCategory cat;
-        if (modifier.hasCategory(VaultGearModifier.AffixCategory.LEGENDARY)  || modifier.hasCategory(VaultGearModifier.AffixCategory.CRAFTED)) {
+        if (modifier.getCategories().isEmpty() || modifier.hasCategory(VaultGearModifier.AffixCategory.LEGENDARY) || modifier.hasCategory(VaultGearModifier.AffixCategory.CRAFTED)) {
             cat = VaultGearModifier.AffixCategory.NONE;
         } else {
             cat = modifier.getCategories().first();
