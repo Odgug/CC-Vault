@@ -360,7 +360,7 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
             }
         }
         if (modifier.contains("IV")) {return 4;}
-        if (modifier.contains("V")) {return 5;}
+        if (modifier.contains("V ")) {return 5;}
         if (modifier.contains("III")) {return 3;}
         if (modifier.contains("II")) {return 2;}
 
