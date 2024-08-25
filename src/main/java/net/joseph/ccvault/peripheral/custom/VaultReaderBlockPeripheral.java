@@ -257,7 +257,17 @@ public class VaultReaderBlockPeripheral extends TweakedPeripheral<VaultReaderBlo
         return VaultGearData.read(be.getItemStack()).getUsedRepairSlots();
     }
 
+    @LuaFunction
+    public final int getUsedFreeCuts(int index) {
+        ItemStack stack = be.getItemStack();
 
+        int cuts = 0;
+        if(stack.getTag() != null && stack.getTag().contains("freeCuts")){
+            cuts = stack.getTag().getInt("freeCuts");
+        }
+
+        return cuts;
+    }
 
 
     @LuaFunction
