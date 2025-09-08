@@ -23,7 +23,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.1.5-3.15'
+version = '1.2.0-3.19'
 group = 'com.joseph.ccvault' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'ccvault'
 
@@ -155,6 +155,12 @@ repositories {
         name = "Squiddev maven cct"
         url = 'https://squiddev.cc/maven/'
     }
+
+    maven { url = 'https://modmaven.dev' }
+    
+    maven { name = 'tterrag maven'
+            url = 'https://maven.tterrag.com'
+    }
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
     // flatDir {
     //     dir 'libs'
@@ -166,9 +172,31 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.9'
-    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:5621637")
+    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:6814291")
     implementation fg.deobf("org.squiddev:cc-tweaked-1.18.2:1.101.3")
-    //implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:4879913")
+    
+    // Mods needed to do debug runs with runClient
+    implementation fg.deobf("com.simibubi.create:create-${create_minecraft_version}:${create_version}:slim") { transitive = false }
+    compileOnly fg.deobf("curse.maven:create-328085:4550986")
+    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${flywheel_minecraft_version}:${flywheel_version}")
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    implementation fg.deobf("curse.maven:curios-309927:4418032")
+    implementation fg.deobf("curse.maven:modular-routers-250294:3776175")
+    implementation fg.deobf("curse.maven:refined-storage-243076:4217424")
+    implementation fg.deobf("curse.maven:quark-243121:3840125")
+    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4548560")
+    implementation fg.deobf("curse.maven:simple-storage-network-268495:3868680")
+    implementation fg.deobf("curse.maven:architects-palette-433862:4498424")
+    implementation fg.deobf("curse.maven:autoreglib-250363:3642382")
+    implementation fg.deobf("curse.maven:sophisticated-backpacks-vault-hunters-edition-696425:4287544")
+    implementation fg.deobf("curse.maven:configured-457570:4462832")
+    implementation fg.deobf("curse.maven:geckolib-388172:4181370")
+    implementation fg.deobf("curse.maven:citadel-331936:3783096")
+    implementation fg.deobf("curse.maven:jei-238222:4593548")
+    implementation fg.deobf("curse.maven:sophisticated-core-618298:4665730")
+    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:4637292")
+    implementation fg.deobf("curse.maven:storage-drawers-223852:3807626")
+    implementation fg.deobf("curse.maven:toms-storage-378609:5211203")
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency

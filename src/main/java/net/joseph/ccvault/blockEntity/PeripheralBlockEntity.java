@@ -1,4 +1,4 @@
-package net.joseph.ccvault.blockEntity;;
+package net.joseph.ccvault.blockEntity;
 
 import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.core.Direction;

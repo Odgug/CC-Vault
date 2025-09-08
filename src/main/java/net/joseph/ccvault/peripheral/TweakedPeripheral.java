@@ -2,10 +2,6 @@ package net.joseph.ccvault.peripheral;
 
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
-import iskallia.vault.gear.attribute.VaultGearModifier;
-import iskallia.vault.gear.data.VaultGearData;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * I did not steal the name from Create. I swear!

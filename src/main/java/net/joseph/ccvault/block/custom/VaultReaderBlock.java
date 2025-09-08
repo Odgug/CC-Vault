@@ -21,9 +21,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
-
-public class VaultReaderBlock extends BaseEntityBlock implements EntityBlock{
+public class VaultReaderBlock extends BaseEntityBlock{
     public VaultReaderBlock(Properties properties) {
         super(properties);
     }

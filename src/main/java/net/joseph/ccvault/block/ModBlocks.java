@@ -1,6 +1,5 @@
 package net.joseph.ccvault.block;
 
-import dan200.computercraft.shared.util.CreativeTabMain;
 import net.joseph.ccvault.CCVault;
 import net.joseph.ccvault.block.custom.VaultReaderBlock;
 import net.joseph.ccvault.item.ModItems;
@@ -14,7 +13,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import dan200.computercraft.shared.Registry.*;
 import java.util.function.Supplier;
 
 
